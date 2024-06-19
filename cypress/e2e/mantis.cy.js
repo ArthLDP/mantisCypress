@@ -14,10 +14,10 @@ describe('Criar Tarefa no Mantis', () => {
     // Esperar 8000 milisegundos para dar tempo para o site carregar
     cy.wait(8000);
 
-    // Verificar login bem-sucedido
+    // Verificar login bem-sucedido encontrando MantisBT no título da página
     cy.title().should('include', 'MantisBT');
 
-    // Navegar para "Criar Tarefa"
+    // Clicar no botão "Criar Tarefa"
     cy.get('.hidden-sm > .btn-group > .btn').click();
 
     // Selecionar categoria
@@ -29,13 +29,13 @@ describe('Criar Tarefa no Mantis', () => {
     // Selecionar prioridade
     cy.get('#priority').select(1); // Seleciona a primeira prioridade disponível
 
-    // Passo 6: Preencher campos do formulário
-    cy.get('input[name=summary]').type('Resumo');
-    cy.get('textarea[name=description]').type('Descrição');
-    cy.get('textarea[name=steps_to_reproduce]').type('1 - teste, 2 - testando.');
-    cy.get('textarea[name=additional_info]').type('Informações adicionais.');
+    // Preencher campos do formulário
+    cy.get('input[name=summary]').type('Resumo'); // Resumo
+    cy.get('textarea[name=description]').type('Descrição'); // Descrição
+    cy.get('textarea[name=steps_to_reproduce]').type('1 - teste, 2 - testando.'); // Passos
+    cy.get('textarea[name=additional_info]').type('Informações adicionais.'); // Informações adicionais
 
-    // Passo 7: Clicar em "Criar nova tarefa"
+    // Clicar em "Criar nova tarefa"
     cy.get('.widget-toolbox > .btn').click();
 
     // Resultado esperado: Verificar se a mensagem "Operação realizada com sucesso." é exibida
